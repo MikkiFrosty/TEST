@@ -1,11 +1,12 @@
+from selene import query
 import re
 import time
 from selenium.webdriver.common.keys import Keys
 import allure
-from selene import have, be, by, query
+from selene import have, be, by, query, query
 from selene import browser
-from tests.models.deposit import Deposit_class
-from tests.models.deposit_calculator_locators import DepositCalculatorLocators as L
+from ozon_deposit_test.models.deposit import Deposit_class
+from ozon_deposit_test.models.deposit_calculator_locators import DepositCalculatorLocators as L
 
 
 class Deposit:
@@ -75,4 +76,5 @@ class Deposit:
                 return self
 
     def should_have_stub(self):
-        browser.element(L.STUB).should(be.visible)
+        browser.element(L.AMOUNT).press(Keys.TAB)
+        browser.element(L.STUB).with_(timeout=10).should(be.visible)

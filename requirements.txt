@@ -1,7 +1,6 @@
-pytest
+Appium-Python-Client>=2.11.1
 allure-pytest
+pytest
+python-dotenv
 selene>=2.0.0rc4
 selenium>=4.10.0
-Appium-Python-Client>=2.11.1
-python-dotenv
-requests

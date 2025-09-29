@@ -1,17 +1,26 @@
+from selene import browser
+
+# --- PYTHONPATH guard: ensure project root on sys.path ---
+import os, sys
+ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+if ROOT not in sys.path:
+    sys.path.insert(0, ROOT)
+# ---------------------------------------------------------
+
 import os
 import pytest
 from dotenv import load_dotenv
 from appium import webdriver
 from appium.options.android import UiAutomator2Options
-from utils.attach import add_screenshot, add_html, add_logs, add_video
+from ozon_deposit_test.utils.attach import add_screenshot, add_html, add_logs, add_video
 
 load_dotenv()
 
 @pytest.fixture(scope="session")
 def credentials():
-    username = os.getenv("BROWSERSTACK_USERNAME")
+    username = os.getenv("BROWSERSTACK_USERNAMENAME")
     access_key = os.getenv("BROWSERSTACK_ACCESS_KEY")
-    assert username and access_key, "BROWSERSTACK_USERNAME/BROWSERSTACK_ACCESS_KEY не заданы"
+    assert username and access_key, "BROWSERSTACK_USERNAMENAME/BROWSERSTACK_ACCESS_KEY не заданы"
     return username, access_key
 
 @pytest.fixture(scope="session")
@@ -25,7 +34,7 @@ def capabilities():
     return opts
 
 @pytest.fixture(scope="function")
-def driver(credentials, capabilities, request):
+def browser.driver(credentials, capabilities, request):
     username, access_key = credentials
     drv = webdriver.Remote(
         f"http://{username}:{access_key}@hub.browserstack.com/wd/hub",
