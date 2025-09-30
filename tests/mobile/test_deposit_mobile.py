@@ -7,7 +7,7 @@ from ozon_deposit_test.pages.deposit_page import Deposit as DepositPage
 from ozon_deposit_test.models.deposit import Deposit_class
 from ozon_deposit_test.models.deposit_calculator_locators import DepositCalculatorLocators as L
 
-#тест мобилка
+#тест мобилка.
 def test_deposit_valid():
     page = DepositPage().open_form()
     value = Deposit_class(
